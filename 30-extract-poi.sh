@@ -7,6 +7,7 @@ osmconvert $PBF_NAME -o=latest.o5m
 osmfilter latest.o5m --keep="$FILTER" -o=poi.o5m
 osmconvert poi.o5m --all-to-nodes --add-bbox-tags --max-objects=1000000000 -o=nodes.o5m
 osmfilter nodes.o5m --keep="$FILTER" -o=bbox.o5m
-KEY="`tail -n +2 def.csv | sed 's/"//g' | cut -d ',' -f 1 | sort -u | tr '\n' ' '`"
+#KEY="`tail -n +2 def.csv | sed 's/"//g' | cut -d ',' -f 1 | sort -u | tr '\n' ' '`"
+KEY="aerialway aerodrome aeroway amenity boundary bridge craft emergency heritage highway historic junction landuse leisure man_made military mountain_pass natural office place railway shop tourism tunnel waterway"
 osmconvert bbox.o5m --csv="@id @lon @lat bBox name alt_name short_name name:fr local_name official_name old_name $KEY" --csv-headline > poi.csv
-rm *.o5m
+#rm *.o5m
